@@ -1,3 +1,9 @@
+drop table recipes.stock;
+drop table recipes.recipe_ingredient;
+drop table recipes.ingredient;
+drop table recipes.recipe;
+drop schema recipes;
+
 create schema recipes;
 
 create table recipes.recipe (
