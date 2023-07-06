@@ -1,10 +1,35 @@
 import axios from "axios";
 
-test("shoud show hello world message", async function() {
-    const response = await axios.get("http://localhost:3000/hello-world");
+axios.defaults.validateStatus = function() {
+    return true;
+}
+
+test("should not create a recipe whitout description", async function() {
+    const input = {
+        idRecipe: "8a0ba637-792a-44ca-8957-63845d260524",
+        description: "",
+        ingredients: [
+            { idIngredient: 1, quantity: "2" },
+            { idIngredient: 2, quantity: "1/2" },
+            { idIngredient: 3, quantity: "1/4" },
+            { idIngredient: 4, quantity: "1/2 colher de sopa" },
+        ]
+    }
+    const response = await axios.post("http://localhost:3000/recipes", input);
     const output = response.data;
-    expect(output.message).toBe("hello world");
-})
+    expect(output.message).toBe("Invalid description");
+});
+
+test("should not create a recipe whitout description", async function() {
+    const input = {
+        idRecipe: "8a0ba637-792a-44ca-8957-63845d260524",
+        description: "A Great Recipe",
+        ingredients: []
+    }
+    const response = await axios.post("http://localhost:3000/recipes", input);
+    const output = response.data;
+    expect(output.message).toBe("Invalid ingredients");
+});
 
 test("should create a new recipe", async function() {
     const input = {
