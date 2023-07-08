@@ -20,7 +20,7 @@ test("should not create a recipe whitout description", async function() {
     expect(output.message).toBe("Invalid description");
 });
 
-test("should not create a recipe whitout description", async function() {
+test("should not create a recipe whitout ingredients", async function() {
     const input = {
         idRecipe: "8a0ba637-792a-44ca-8957-63845d260524",
         description: "A Great Recipe",
