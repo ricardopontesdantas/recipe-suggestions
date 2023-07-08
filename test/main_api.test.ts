@@ -45,5 +45,5 @@ test("should create a new recipe", async function() {
     const response = await axios.post("http://localhost:3000/recipes", input);
     const output = response.data;
     expect(output.description).toBe("omelete");
-    expect(output.ingredients.length).toBe(4);
+    expect(output.quantityOfIngredients).toBe(4);
 });
