@@ -12,5 +12,9 @@ app.post("/recipes", function(request: Request, response: Response) {
             message: "Invalid ingredients"
         });
     }
-})
+    const output = {
+        description: request.body.description
+    }
+    return response.json(output);
+});
 app.listen(3000);
