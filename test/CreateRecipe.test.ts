@@ -14,4 +14,5 @@ test("should create a new recipe", async function() {
     const createRecipe = new CreateRecipe();
     const output = await createRecipe.execute(input);
     expect(output.description).toBe("omelete");
+    expect(output.amountIngredients).toBe(4);
 });
