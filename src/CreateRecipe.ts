@@ -13,7 +13,11 @@ export default class CreateRecipe {
         const ingredientRepositoryDatabase = new IngredientRepositoryDatabase();
         for (const ingredient of input.ingredients) {
             const ingredientData = await ingredientRepositoryDatabase.get(ingredient.idIngredient);
-            recipe.ingredients.push(ingredientData);
+            recipe.ingredients.push({ 
+                idIngredient: ingredientData.id_ingredient, 
+                description: ingredientData.description,
+                quantity: ingredient.quantity
+            });
         }
         const recipeRepositoryDatabase = new RecipeRepositoryDatabase();
         await recipeRepositoryDatabase.save(recipe);
