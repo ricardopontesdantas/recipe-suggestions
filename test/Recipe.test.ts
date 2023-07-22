@@ -16,4 +16,10 @@ test("should add an ingredient", function() {
     recipe.addItem(4, "1/2 colher de sopa");
     expect(recipe.items.length).toBe(4);
 });
+
+test("should not add duplicated items", function() {
+    const idRecipe = crypto.randomUUID();
+    const recipe = new Recipe(idRecipe, "omelete");
+    recipe.addItem(1, "2");
+    expect(() => recipe.addItem(1, "2")).toThrow(new Error("Duplicated items"));
 });
