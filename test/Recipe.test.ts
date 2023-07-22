@@ -10,9 +10,10 @@ test("should create a recipe", function() {
 test("should add an ingredient", function() {
     const idRecipe = crypto.randomUUID();
     const recipe = new Recipe(idRecipe, "omelete");
-    recipe.addIngredient({ idIngredient: 1, quantity: "2" });
-    recipe.addIngredient({ idIngredient: 2, quantity: "1/2" });
-    recipe.addIngredient({ idIngredient: 3, quantity: "1/4" });
-    recipe.addIngredient({ idIngredient: 4, quantity: "1/2 colher de sopa" });
-    expect(recipe.ingredients.length).toBe(4);
+    recipe.addItem(1, "2");
+    recipe.addItem(2, "1/2");
+    recipe.addItem(3, "1/4");
+    recipe.addItem(4, "1/2 colher de sopa");
+    expect(recipe.items.length).toBe(4);
+});
 });
